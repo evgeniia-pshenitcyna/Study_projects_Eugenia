@@ -1,7 +1,1 @@
-# AE_bootcamp
-# AE_bootcamp
-# AE_bootcamp
-# AE_bootcamp
-# AE_bootcamp
-# AE_bootcamp
-# AE_bootcamp
+Created for studies projects
