@@ -31,6 +31,8 @@ resources = {
 }
 
 
+# TODO: 1. process coins
+# TODO: 2. check if transaction is successful
 def ask_money():
     print("Please insert coins.")
     quarters = int(input("How many quarters?"))  # 25 cents
@@ -39,58 +41,52 @@ def ask_money():
     pennies = int(input("How many pennies?"))  # 1 cent
 
 
+# change = 0
+# print(f"Here is ${change} in change.")
+# print(f"Here is your {drink}. Enjoy!")
+# then restart
+# print("Sorry that's not enough money. Money refunded.")
+# then restart
+
 def get_coffee():
-    drink = input("What would you like? (espresso/latte/cappuccino): ")
-    #creates a report
-    if drink == "report":
-        for k in resources:
-            key = k.capitalize()
-            value = resources[k]
-            print(f"{key}: {value}ml")
-        get_coffee()
-    #checks if resources are sufficient:
-    if drink == 'espresso':
-        if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
-            print("Sorry there is not enough water.")
-            get_coffee()
-        elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
-            print("Sorry there is not enough coffee.")
-            get_coffee()
+    machine_active = True
+    while machine_active:
+        drink = input("What would you like? (espresso/latte/cappuccino): ")
+        # switches machine off:
+        if drink == 'off':
+            machine_active = False
+        # creates a report
+        elif drink == "report":
+            for k in resources:
+                key = k.capitalize()
+                value = resources[k]
+                print(f"{key}: {value}ml")
+        # checks if resources are sufficient:
+        elif drink == 'espresso':
+            if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
+                print("Sorry there is not enough water.")
+            elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
+                print("Sorry there is not enough coffee.")
+            else:
+                ask_money()
+        elif drink == 'cappuccino':
+            if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
+                print("Sorry there is not enough water.")
+            elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
+                print("Sorry there is not enough coffee.")
+            elif resources["milk"] < MENU["cappuccino"]["ingredients"]["milk"]:
+                print("Sorry there is not enough coffee.")
+            else:
+                ask_money()
         else:
-            ask_money()
-    elif drink == 'cappuccino':
-        if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
-            print("Sorry there is not enough water.")
-            get_coffee()
-        elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
-            print("Sorry there is not enough coffee.")
-            get_coffee()
-        elif resources["milk"] < MENU["cappuccino"]["ingredients"]["milk"]:
-            print("Sorry there is not enough coffee.")
-            get_coffee()
-        else:
-            ask_money()
-    else:
-        if resources["water"] < MENU["latte"]["ingredients"]["water"]:
-            print("Sorry there is not enough water.")
-            get_coffee()
-        elif resources["coffee"] < MENU["latte"]["ingredients"]["coffee"]:
-            print("Sorry there is not enough coffee.")
-            get_coffee()
-        elif resources["milk"] < MENU["latte"]["ingredients"]["milk"]:
-            print("Sorry there is not enough coffee.")
-            get_coffee()
-        else:
-            ask_money()
+            if resources["water"] < MENU["latte"]["ingredients"]["water"]:
+                print("Sorry there is not enough water.")
+            elif resources["coffee"] < MENU["latte"]["ingredients"]["coffee"]:
+                print("Sorry there is not enough coffee.")
+            elif resources["milk"] < MENU["latte"]["ingredients"]["milk"]:
+                print("Sorry there is not enough coffee.")
+            else:
+                ask_money()
+
 
 get_coffee()
-
-#process coins
-
-#check if transaction is successful
-change = 0
-print(f"Here is ${change} in change.")
-print(f"Here is your {drink}. Enjoy!")
-#then restart
-print("Sorry that's not enough money. Money refunded.")
-#then restart
