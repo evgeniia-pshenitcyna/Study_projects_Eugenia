@@ -39,16 +39,16 @@ def ask_money():
     pennies = int(input("How many pennies?"))  # 1 cent
 
 
-# TODO: 1. print report
 def get_coffee():
     drink = input("What would you like? (espresso/latte/cappuccino): ")
+    #creates a report
     if drink == "report":
         for k in resources:
             key = k.capitalize()
             value = resources[k]
             print(f"{key}: {value}ml")
         get_coffee()
-# TODO: 2.check if resources are sufficient
+    #checks if resources are sufficient:
     if drink == 'espresso':
         if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
             print("Sorry there is not enough water.")
