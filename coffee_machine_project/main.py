@@ -42,6 +42,7 @@ def ask_money():
     amount = 25 * quarters + 10 * dimes + 5 * nickles + pennies
     return amount
 
+
 # change = 0
 # print(f"Here is ${change} in change.")
 # print(f"Here is your {drink}. Enjoy!")
@@ -70,9 +71,9 @@ def get_coffee():
                 print("Sorry there is not enough coffee.")
             else:
                 amount_paid = ask_money()
-                drink_price = MENU["espresso"]["cost"]*100
+                drink_price = MENU["espresso"]["cost"] * 100
                 if amount_paid > drink_price:
-                    change = round((amount_paid - drink_price)*100, 2)
+                    change = round((amount_paid - drink_price) * 100, 2)
                     print(f"Here is ${change} in change.")
                     print(f"Here is your {drink}. Enjoy!")
                 elif amount_paid < drink_price:
