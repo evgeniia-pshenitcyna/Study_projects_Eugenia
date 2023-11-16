@@ -39,7 +39,8 @@ def ask_money():
     dimes = int(input("How many dimes?"))  # 10 cents
     nickles = int(input("How many nickles?"))  # 5 cents
     pennies = int(input("How many pennies?"))  # 1 cent
-
+    amount = 25 * quarters + 10 * dimes + 5 * nickles + pennies
+    return amount
 
 # change = 0
 # print(f"Here is ${change} in change.")
@@ -68,7 +69,16 @@ def get_coffee():
             elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
                 print("Sorry there is not enough coffee.")
             else:
-                ask_money()
+                amount_paid = ask_money()
+                drink_price = MENU["espresso"]["cost"]*100
+                if amount_paid > drink_price:
+                    change = round((amount_paid - drink_price)*100, 2)
+                    print(f"Here is ${change} in change.")
+                    print(f"Here is your {drink}. Enjoy!")
+                elif amount_paid < drink_price:
+                    print("Sorry that's not enough money. Money refunded.")
+                else:
+                    print(f"Here is your {drink}. Enjoy!")
         elif drink == 'cappuccino':
             if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
                 print("Sorry there is not enough water.")
@@ -77,7 +87,16 @@ def get_coffee():
             elif resources["milk"] < MENU["cappuccino"]["ingredients"]["milk"]:
                 print("Sorry there is not enough coffee.")
             else:
-                ask_money()
+                amount_paid = ask_money()
+                drink_price = MENU["cappuccino"]["cost"] * 100
+                if amount_paid > drink_price:
+                    change = round((amount_paid - drink_price) * 100, 2)
+                    print(f"Here is ${change} in change.")
+                    print(f"Here is your {drink}. Enjoy!")
+                elif amount_paid < drink_price:
+                    print("Sorry that's not enough money. Money refunded.")
+                else:
+                    print(f"Here is your {drink}. Enjoy!")
         else:
             if resources["water"] < MENU["latte"]["ingredients"]["water"]:
                 print("Sorry there is not enough water.")
@@ -86,7 +105,16 @@ def get_coffee():
             elif resources["milk"] < MENU["latte"]["ingredients"]["milk"]:
                 print("Sorry there is not enough coffee.")
             else:
-                ask_money()
+                amount_paid = ask_money()
+                drink_price = MENU["cappuccino"]["cost"] * 100
+                if amount_paid > drink_price:
+                    change = round((amount_paid - drink_price) * 100, 2)
+                    print(f"Here is ${change} in change.")
+                    print(f"Here is your {drink}. Enjoy!")
+                elif amount_paid < drink_price:
+                    print("Sorry that's not enough money. Money refunded.")
+                else:
+                    print(f"Here is your {drink}. Enjoy!")
 
 
 get_coffee()
