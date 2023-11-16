@@ -31,7 +31,6 @@ resources = {
 }
 
 
-#reduce resources
 def ask_money():
     print("Please insert coins.")
     quarters = int(input("How many quarters?"))  # 25 cents
@@ -49,11 +48,11 @@ def deduct_resources(drink):
         resources["coffee"] = resources["coffee"] - MENU["latte"]["ingredients"]["coffee"]
     elif drink == 'cappuccino':
         resources["water"] = resources["water"] - MENU["cappuccino"]["ingredients"]["water"]
-        resources["milk"] = resources["water"] - MENU["cappuccino"]["ingredients"]["milk"]
-        resources["coffee"] = resources["water"] - MENU["cappuccino"]["ingredients"]["coffee"]
+        resources["milk"] = resources["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
+        resources["coffee"] = resources["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
     else:
         resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
-        resources["coffee"] = resources["water"] - MENU["espresso"]["ingredients"]["coffee"]
+        resources["coffee"] = resources["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
 
 
 def get_coffee():
