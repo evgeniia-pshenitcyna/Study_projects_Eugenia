@@ -44,16 +44,16 @@ def ask_money():
 
 def deduct_resources(drink):
     if drink == "latte":
-        MENU["resources"]["water"] = MENU["resources"]["water"] - MENU["latte"]["ingredients"]["water"]
-        MENU["resources"]["milk"] = MENU["resources"]["milk"] - MENU["latte"]["ingredients"]["milk"]
-        MENU["resources"]["coffee"] = MENU["resources"]["coffee"] - MENU["latte"]["ingredients"]["coffee"]
+        resources["water"] = resources["water"] - MENU["latte"]["ingredients"]["water"]
+        resources["milk"] = resources["milk"] - MENU["latte"]["ingredients"]["milk"]
+        resources["coffee"] = resources["coffee"] - MENU["latte"]["ingredients"]["coffee"]
     elif drink == 'cappuccino':
-        MENU["resources"]["water"] = MENU["resources"]["water"] - MENU["cappuccino"]["ingredients"]["water"]
-        MENU["resources"]["milk"] = MENU["resources"]["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
-        MENU["resources"]["coffee"] = MENU["resources"]["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
+        resources["water"] = resources["water"] - MENU["cappuccino"]["ingredients"]["water"]
+        resources["milk"] = resources["water"] - MENU["cappuccino"]["ingredients"]["milk"]
+        resources["coffee"] = resources["water"] - MENU["cappuccino"]["ingredients"]["coffee"]
     else:
-        MENU["resources"]["water"] = MENU["resources"]["water"] - MENU["espresso"]["ingredients"]["water"]
-        MENU["resources"]["coffee"] = MENU["resources"]["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
+        resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
+        resources["coffee"] = resources["water"] - MENU["espresso"]["ingredients"]["coffee"]
 
 
 def get_coffee():
