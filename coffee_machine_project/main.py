@@ -31,8 +31,7 @@ resources = {
 }
 
 
-# TODO: 1. process coins
-# TODO: 2. check if transaction is successful
+#reduce resources
 def ask_money():
     print("Please insert coins.")
     quarters = int(input("How many quarters?"))  # 25 cents
@@ -42,13 +41,6 @@ def ask_money():
     amount = 25 * quarters + 10 * dimes + 5 * nickles + pennies
     return amount
 
-
-# change = 0
-# print(f"Here is ${change} in change.")
-# print(f"Here is your {drink}. Enjoy!")
-# then restart
-# print("Sorry that's not enough money. Money refunded.")
-# then restart
 
 def get_coffee():
     machine_active = True
