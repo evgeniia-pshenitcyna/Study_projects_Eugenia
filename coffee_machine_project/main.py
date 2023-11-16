@@ -65,13 +65,15 @@ def get_coffee():
                 amount_paid = ask_money()
                 drink_price = MENU["espresso"]["cost"] * 100
                 if amount_paid > drink_price:
-                    change = round((amount_paid - drink_price) * 100, 2)
+                    change = round((amount_paid - drink_price)/100, 2)
                     print(f"Here is ${change} in change.")
                     print(f"Here is your {drink}. Enjoy!")
+                    print(u'\u2615')
                 elif amount_paid < drink_price:
                     print("Sorry that's not enough money. Money refunded.")
                 else:
                     print(f"Here is your {drink}. Enjoy!")
+                    print(u'\u2615')
         elif drink == 'cappuccino':
             if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
                 print("Sorry there is not enough water.")
@@ -83,13 +85,15 @@ def get_coffee():
                 amount_paid = ask_money()
                 drink_price = MENU["cappuccino"]["cost"] * 100
                 if amount_paid > drink_price:
-                    change = round((amount_paid - drink_price) * 100, 2)
+                    change = round((amount_paid - drink_price)/100, 2)
                     print(f"Here is ${change} in change.")
                     print(f"Here is your {drink}. Enjoy!")
+                    print(u'\u2615')
                 elif amount_paid < drink_price:
                     print("Sorry that's not enough money. Money refunded.")
                 else:
                     print(f"Here is your {drink}. Enjoy!")
+                    print(u'\u2615')
         else:
             if resources["water"] < MENU["latte"]["ingredients"]["water"]:
                 print("Sorry there is not enough water.")
@@ -101,13 +105,15 @@ def get_coffee():
                 amount_paid = ask_money()
                 drink_price = MENU["cappuccino"]["cost"] * 100
                 if amount_paid > drink_price:
-                    change = round((amount_paid - drink_price) * 100, 2)
+                    change = round((amount_paid - drink_price)/100, 2)
                     print(f"Here is ${change} in change.")
                     print(f"Here is your {drink}. Enjoy!")
+                    print(u'\u2615')
                 elif amount_paid < drink_price:
                     print("Sorry that's not enough money. Money refunded.")
                 else:
                     print(f"Here is your {drink}. Enjoy!")
+                    print(u'\u2615')
 
 
 get_coffee()
