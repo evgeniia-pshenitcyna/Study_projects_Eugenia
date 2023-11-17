@@ -32,6 +32,7 @@ resources = {
 
 
 def ask_money():
+    """Returns total calculated amount from inserted coins"""
     print("Please insert coins.")
     quarters = int(input("How many quarters?"))  # 25 cents
     dimes = int(input("How many dimes?"))  # 10 cents
