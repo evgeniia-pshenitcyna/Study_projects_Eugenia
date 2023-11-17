@@ -43,6 +43,7 @@ def ask_money():
 
 
 def deduct_resources(drink):
+    """Reduces the number of resources available based on the selected drink"""
     if drink == "latte":
         resources["water"] = resources["water"] - MENU["latte"]["ingredients"]["water"]
         resources["milk"] = resources["milk"] - MENU["latte"]["ingredients"]["milk"]
@@ -57,6 +58,7 @@ def deduct_resources(drink):
 
 
 def calculate_amount(drink, amount_paid):
+    """Checks if user paid enough money for a drink and print if they have a drink, change or refund"""
     if drink == "latte":
         drink_price = MENU["latte"]["cost"] * 100
     elif drink == "cappuccino":
@@ -78,6 +80,7 @@ def calculate_amount(drink, amount_paid):
 
 
 def get_coffee():
+    """Main function that keeps asking for what coffee customer wants unless it gets switched off with secret word"""
     machine_active = True
     while machine_active:
         drink = input("What would you like? (espresso/latte/cappuccino): ")
