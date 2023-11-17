@@ -28,6 +28,7 @@ resources = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
+    "money": 0
 }
 
 
@@ -48,13 +49,16 @@ def deduct_resources(drink):
         resources["water"] = resources["water"] - MENU["latte"]["ingredients"]["water"]
         resources["milk"] = resources["milk"] - MENU["latte"]["ingredients"]["milk"]
         resources["coffee"] = resources["coffee"] - MENU["latte"]["ingredients"]["coffee"]
+        resources["money"] = resources["money"] + MENU["latte"]["cost"]
     elif drink == 'cappuccino':
         resources["water"] = resources["water"] - MENU["cappuccino"]["ingredients"]["water"]
         resources["milk"] = resources["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
         resources["coffee"] = resources["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
+        resources["money"] = resources["money"] + MENU["cappuccino"]["cost"]
     else:
         resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
         resources["coffee"] = resources["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
+        resources["money"] = resources["money"] + MENU["espresso"]["cost"]
 
 
 def calculate_amount(drink, amount_paid):
@@ -92,7 +96,12 @@ def get_coffee():
             for k in resources:
                 key = k.capitalize()
                 value = resources[k]
-                print(f"{key}: {value}ml")
+                if key == 'Water' or key == 'Milk':
+                    print(f"{key}: {value}ml")
+                elif key == 'Coffee':
+                    print(f"{key}: {value}g")
+                else:
+                    print(f"{key}: ${value}")
         # checks if resources are sufficient:
         elif drink == 'espresso':
             if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
