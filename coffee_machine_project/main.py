@@ -45,20 +45,13 @@ def ask_money():
 
 def deduct_resources(drink):
     """Reduces the number of resources available based on the selected drink"""
-    if drink == "latte":
-        resources["water"] = resources["water"] - MENU["latte"]["ingredients"]["water"]
-        resources["milk"] = resources["milk"] - MENU["latte"]["ingredients"]["milk"]
-        resources["coffee"] = resources["coffee"] - MENU["latte"]["ingredients"]["coffee"]
-        resources["money"] = resources["money"] + MENU["latte"]["cost"]
-    elif drink == 'cappuccino':
-        resources["water"] = resources["water"] - MENU["cappuccino"]["ingredients"]["water"]
-        resources["milk"] = resources["milk"] - MENU["cappuccino"]["ingredients"]["milk"]
-        resources["coffee"] = resources["coffee"] - MENU["cappuccino"]["ingredients"]["coffee"]
-        resources["money"] = resources["money"] + MENU["cappuccino"]["cost"]
-    else:
-        resources["water"] = resources["water"] - MENU["espresso"]["ingredients"]["water"]
-        resources["coffee"] = resources["coffee"] - MENU["espresso"]["ingredients"]["coffee"]
-        resources["money"] = resources["money"] + MENU["espresso"]["cost"]
+    for key in MENU:
+        if key == drink:
+            resources["water"] = resources["water"] - MENU[drink]["ingredients"]["water"]
+            resources["coffee"] = resources["coffee"] - MENU[drink]["ingredients"]["coffee"]
+            resources["money"] = resources["money"] + MENU[drink]["cost"]
+            if drink != "espresso":
+                resources["milk"] = resources["milk"] - MENU[drink]["ingredients"]["milk"]
 
 
 def calculate_amount(drink, amount_paid):
@@ -83,6 +76,20 @@ def calculate_amount(drink, amount_paid):
         print(u'\u2615')
 
 
+def resource_sufficient(drink):
+    for key in MENU:
+        if key == drink:
+            for ingredient in MENU[drink]["ingredients"]:
+                missing_ingredient = 0
+                if MENU[drink]["ingredients"][ingredient] > resources[ingredient]:
+                    print(f"Sorry there is not enough {ingredient}.")
+                    missing_ingredient += 1
+                if missing_ingredient > 0:
+                    return False
+                else:
+                    return True
+
+
 def get_coffee():
     """Main function that keeps asking for what coffee customer wants unless it gets switched off with secret word"""
     machine_active = True
@@ -103,32 +110,9 @@ def get_coffee():
                 else:
                     print(f"{key}: ${value}")
         # checks if resources are sufficient:
-        elif drink == 'espresso':
-            if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
-                print("Sorry there is not enough water.")
-            elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
-                print("Sorry there is not enough coffee.")
-            else:
-                amount_paid = ask_money()
-                calculate_amount(drink, amount_paid)
-        elif drink == 'cappuccino':
-            if resources["water"] < MENU["cappuccino"]["ingredients"]["water"]:
-                print("Sorry there is not enough water.")
-            elif resources["coffee"] < MENU["cappuccino"]["ingredients"]["coffee"]:
-                print("Sorry there is not enough coffee.")
-            elif resources["milk"] < MENU["cappuccino"]["ingredients"]["milk"]:
-                print("Sorry there is not enough coffee.")
-            else:
-                amount_paid = ask_money()
-                calculate_amount(drink, amount_paid)
         else:
-            if resources["water"] < MENU["latte"]["ingredients"]["water"]:
-                print("Sorry there is not enough water.")
-            elif resources["coffee"] < MENU["latte"]["ingredients"]["coffee"]:
-                print("Sorry there is not enough coffee.")
-            elif resources["milk"] < MENU["latte"]["ingredients"]["milk"]:
-                print("Sorry there is not enough coffee.")
-            else:
+            is_enough = resource_sufficient(drink)
+            if is_enough:
                 amount_paid = ask_money()
                 calculate_amount(drink, amount_paid)
 
