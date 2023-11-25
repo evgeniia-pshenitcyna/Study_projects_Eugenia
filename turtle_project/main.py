@@ -20,9 +20,9 @@ def change_color():
 
 def draw_figure(sides):
     """Draws a figure based on number of sides. The length of each side is always 100 steps."""
+    angle = 360 / sides
     for _ in range(sides):
         bibi.forward(100)
-        angle = 360 / sides
         bibi.right(angle)
 
 
