@@ -1,4 +1,3 @@
-# Detect the collision with the paddle
 # Detect when paddle misses
 # Keep score
 from turtle import Screen
@@ -33,7 +32,7 @@ while game_is_on:
         ball.bounce_y()
 
     # Detect collision with the right paddles
-    if (ball.xcor() > 340 and ball.distance(r_paddle) < 50) or (ball.xcor() < -340 and ball.distance(l_paddle) < 50):
+    if (ball.xcor() > 320 and ball.distance(r_paddle) < 50) or (ball.xcor() < -320 and ball.distance(l_paddle) < 50):
         ball.bounce_x()
 
 screen.exitonclick()
