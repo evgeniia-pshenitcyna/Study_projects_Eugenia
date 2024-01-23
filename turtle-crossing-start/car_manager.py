@@ -15,8 +15,8 @@ class CarManager(Turtle):
         self.setheading(180)
         self.color(random.choice(COLORS))
         x_pos = 280
-        y_pos = random.randint(-280, 280)
+        y_pos = random.randint(-250, 250)
         self.goto(x_pos, y_pos)
 
-    def move(self):
-        self.forward(MOVE_INCREMENT)
+    def move(self, speed_increase):
+        self.forward(MOVE_INCREMENT+speed_increase)
