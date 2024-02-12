@@ -12,26 +12,29 @@ player = Player()
 
 screen.listen()
 screen.onkey(player.move, "Up")
-car = CarManager()
+car_manager = CarManager()
 scoreboard = Scoreboard()
-a = 0
 
 game_is_on = True
+
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    car.move(0)
-    a += 1
-    if a > 6:
-        new_car = CarManager()
-        new_car.move(0)
-        scoreboard.update_scoreboard()
-        a = 0
-    if player.distance(car) < 20:
-        print("Game over.")
-        game_is_on = False
-    if player.position() == (0, -280):
-        car.move(10)
 
+    car_manager.create_car()
+    car_manager.move_car()
+
+    #Detect collision with car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
+            print("Game over.")
+            scoreboard.game_over()
+            game_is_on = False
+
+    #Detect successful crossing
+    if player.is_at_finish():
+        player.go_to_start()
+        car_manager.increase_speed()
+        scoreboard.level_up()
 
 screen.exitonclick()
