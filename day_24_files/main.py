@@ -1,14 +1,15 @@
 # with open("my_file.txt", mode="w") as file:
 #     file.write("I love my family, yoga, flowers and traveling.")
+PATH = "/Users/e.pshenitcyna/Desktop/my_file.txt"
 
-with open("my_file.txt", mode="a") as file:
+with open(PATH, mode="a") as file:
     file.write("\nI love my family, yoga, flowers and traveling.")
 
-with open("my_file.txt") as file:
+with open(PATH) as file:
     contents = file.read()
     print(contents)
 # file.close() - no need to use it if there is "with"
 
 # creating non existing file
-with open("new_file.txt", mode="w") as file:
+with open(PATH, mode="w") as file:
     file.write("I am beautiful, smart and brave.")
