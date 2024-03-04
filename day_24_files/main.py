@@ -1,6 +1,7 @@
 # with open("my_file.txt", mode="w") as file:
 #     file.write("I love my family, yoga, flowers and traveling.")
-PATH = "/Users/e.pshenitcyna/Desktop/my_file.txt"
+#/Users/e.pshenitcyna/Desktop/my_file.txt
+PATH = "../../../Desktop/my_file.txt"
 
 with open(PATH, mode="a") as file:
     file.write("\nI love my family, yoga, flowers and traveling.")
