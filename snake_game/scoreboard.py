@@ -13,8 +13,7 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.score = 0
         with open("data.txt") as file:
-            high_score = file.read()
-        self.high_score = int(high_score)
+            self.high_score = int(file.read())
         self.update_scoreboard()
 
     def update_scoreboard(self):
