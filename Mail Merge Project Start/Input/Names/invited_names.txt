@@ -3,6 +3,6 @@ Zuko
 Appa
 Katara
 Sokka
-Momo
-Uncle Iroh
+"Momo"
+"Uncle Iroh"
 Toph
